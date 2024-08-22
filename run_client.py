@@ -1,6 +1,7 @@
 
 from client import AgentClient
 from schema import ChatMessage
+from dotenv import load_dotenv
 
 #### ASYNC ####
 import asyncio
@@ -8,7 +9,7 @@ async def amain():
     client = AgentClient()
 
     print("Chat example:")
-    response = await client.ainvoke("Tell me a brief joke?", model="llama-3.1-70b")
+    response = await client.ainvoke("Tell me a brief joke?", model="gemma-7b-it")
     response.pretty_print()
 
     print("\nStream example:")
@@ -19,6 +20,8 @@ async def amain():
             message.pretty_print()
         else:
             print(f"ERROR: Unknown type - {type(message)}")
+
+load_dotenv()
 
 asyncio.run(amain())
 

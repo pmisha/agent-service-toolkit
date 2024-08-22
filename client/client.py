@@ -16,6 +16,7 @@ class AgentClient:
             base_url (str): The base URL of the agent service.
         """
         self.base_url = base_url
+        
         self.auth_secret = os.getenv("AUTH_SECRET")
 
     @property

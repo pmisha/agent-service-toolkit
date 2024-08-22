@@ -35,10 +35,11 @@ unsafe_content_categories = {
 }
 
 llama_guard_instructions = f"""
-[INST] Task: Check if there is unsafe content in '{{role}}' messages in conversations according our safety policy with the below categories.
+[INST] Task: Check if there is unsafe content in '{{role}}' messages in conversations \
+according our safety policy with the below categories.
 
 <BEGIN UNSAFE CONTENT CATEGORIES>
-{"\n".join([f"{k}: {v}" for k, v in unsafe_content_categories.items()])}
+{";".join([f"{k}: {v}" for k, v in unsafe_content_categories.items()])}
 <END UNSAFE CONTENT CATEGORIES>
 
 <BEGIN CONVERSATION>
@@ -48,7 +49,7 @@ llama_guard_instructions = f"""
 <END CONVERSATION>
 
 Provide your safety assessment for {{role}} in the above conversation:
-- First line must read 'safe' or 'unsafe'.
+- First line must read 'safe' or 'unsafe'
 - If unsafe, a second line must include a comma-separated list of violated categories. [/INST]"""
 
 
